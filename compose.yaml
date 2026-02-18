@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: homecredit-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: mluser
+      POSTGRES_PASSWORD: mlpassword
+      POSTGRES_DB: homecredit
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./data/raw:/data/raw:ro
+
+volumes:
+  pgdata:
